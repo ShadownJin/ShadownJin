@@ -35,7 +35,7 @@ Workflow em:
 ## 🌐 Futuro do Projeto
 - Moderação automática (ativável/desativável).
 - Dashboard Web estilo Loritta.
-- Rotinas avançadas de economia/XPs.
+- Rotinas avançadas de economia/XP.
 - Estatísticas no servidor.
 - Log de eventos.
 - Sistema de inventário.

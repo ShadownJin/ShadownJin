@@ -1,7 +1,6 @@
 .gitignore
 .env
 .DS_Store
-.github/
 node_modules/
 dist/
 src/command-deploy.js
