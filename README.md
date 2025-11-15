@@ -13,12 +13,16 @@ Bot em JavaScript usando **discord.js**, **Firebase Firestore** e estrutura modu
 ---
 
 ## 🛠️ Tecnologias Principais
-- Node.js 18+
-- Discord.js
-- Firebase Admin SDK
-- Firestore Database
-- Dotenv
-- Nodemon
+### Linguagem e Ambiente
+* **TypeScript (TS):** Utilizado como linguagem principal para tipagem forte, garantindo maior estabilidade e menos erros em tempo de execução.
+* **Node.js 18+:** O ambiente de *runtime* principal.
+* **ES Modules (ESM):** O projeto utiliza a sintaxe moderna `import`/`export`, aproveitando os recursos assíncronos como `await import()`.
+* **TSX:** Ferramenta de *runtime* para executar instantaneamente arquivos TypeScript e JSX, substituindo `nodemon` e `ts-node` em ambientes de desenvolvimento.
+
+### Bibliotecas Principais
+* **Discord.js (v14+):** Biblioteca principal para interagir com a API do Discord.
+* **Firebase Admin SDK:** Utilizado para inicializar o **Firestore Database** e gerir a persistência de dados (XP, comandos, etc.).
+* **Dotenv:** Para gestão e carregamento seguro de variáveis de ambiente a partir do ficheiro `.env`.
 
 ---
 

@@ -1,23 +1,25 @@
 {
   "name": "shadownjin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "deploy": "node src/command-deploy.js"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShadownJin/ShadownJin.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "discord",
+    "typescript",
+    "esm"
+  ],
+  "author": "Sanzinho",
+  "license": "GNU",
   "bugs": {
     "url": "https://github.com/ShadownJin/ShadownJin/issues"
   },
@@ -28,8 +30,10 @@
     "firebase-admin": "^13.6.0"
   },
   "devDependencies": {
-    "eslint": "^9.39.1",
-    "nodemon": "^3.1.11",
-    "prettier": "^3.6.2"
+    "@types/node": "^24.10.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   }
 }
