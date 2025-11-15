@@ -1,7 +1,7 @@
 const { initFirestore } = require('./firestore');
 const db = initFirestore();
 
-const COLDOWN = 60 * 1000;
+const COOLDOWN = 60 * 1000;
 const inCooldown = new Map();
 
 async function addXp(guildId, userId, amount) {
@@ -24,7 +24,7 @@ async function addXp(guildId, userId, amount) {
 
 function canGain(userId) {
     const last = inCooldown.get(userId) || 0;
-    if (Date.now() - last < COLLDOWN) return false;
+    if (Date.now() - last < COOLDOWN) return false;
     inCooldown.set(userId, Date.now());
     return true;
 }

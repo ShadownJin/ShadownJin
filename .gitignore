@@ -4,5 +4,6 @@
 .github/
 node_modules/
 dist/
+src/command-deploy.js
 package-lock.json
 serviceAccountKey.json

@@ -1,5 +1,5 @@
-const { xpToLevel } = require('../lib/xpManager');
-const { initFirestore } = require('../lib/firestore');
+const { xpToLevel } = require('../../lib/xpManager');
+const { initFirestore } = require('../../lib/firestore');
 
 module.exports = {
   name: 'xp',
