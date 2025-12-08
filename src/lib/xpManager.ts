@@ -1,6 +1,6 @@
 import { UserData } from "../structs/types/firestore.js";
 import { initFirestore } from "./firestore.js";
-import { DocumentData, DocumentReference, Firestore } from "firebase-admin/firestore";
+import { DocumentReference, Firestore } from "firebase-admin/firestore";
 
 // --- Tipagem de Dados (incluída acima para contexto) ---
 type Snowflake = string;

@@ -4,7 +4,10 @@ import {
     PermissionResolvable,
     ClientEvents,
     Snowflake,
-    ApplicationCommandType
+    ApplicationCommandType,
+    SlashCommandBuilder,
+    SlashCommandSubcommandBuilder,
+    SlashCommandSubcommandGroupBuilder
 } from 'discord.js';
 import { DocumentData } from 'firebase-admin/firestore';
 
@@ -12,6 +15,7 @@ import { DocumentData } from 'firebase-admin/firestore';
 export interface ICommand {
     name: string;
     description: string;
+    category: string;
     meta: {
         cooldown: number;
         type: ApplicationCommandType;

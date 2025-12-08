@@ -18,7 +18,6 @@ const client = new Client({
     ]
 });
 
-
 client.commands = new Collection();
 await loadCommands(client, path.join(__dirname, 'commands'));
 await loadEvents(client, path.join(__dirname, 'events'));

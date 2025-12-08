@@ -7,7 +7,8 @@ import { ICommand } from '../../structs/types/client.js'; // Ajuste o caminho co
  */
 const pingCommand: ICommand = {
     name: 'ping',
-    description: 'Verifica se o bot está online e a responder.',
+    description: '[UTILS] Verifica se o bot está online e a responder.',
+    category: 'Utils',
     // A estrutura dos comandos de barra é definida no 'meta'
     meta: {
         type: ApplicationCommandType.ChatInput, // Indica que é um comando de barra (Slash Command)
