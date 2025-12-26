@@ -1,11 +1,21 @@
-import { config } from 'dotenv';
-config();
-import path from 'path';
+// Import dotenv
+import dotenv from 'dotenv';
+dotenv.config();
+import path from 'node:path';
+
+// Outros imports
 import { fileURLToPath } from 'url';
 import { Client, Collection, GatewayIntentBits, } from 'discord.js';
 import { addXp, canGain, xpToLevel } from './lib/xpManager.js';
 import { loadCommands } from "./handlers/commandHandler.js";
 import { loadEvents } from "./handlers/eventHandler.js";
+
+
+console.log("ENV TEST:", {
+  projectId: !!process.env.FIREBASE_PROJECT_ID,
+  hasKey: !!process.env.FIREBASE_PRIVATE_KEY,
+  botKet: !!process.env.DISCORD_TOKEN,
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -18,7 +18,6 @@ const botinfo: ICommand = {
         permissions: [],
         type: ApplicationCommandType.ChatInput
     },
-
     async execute(client: Client, interaction: ChatInputCommandInteraction): Promise<void> {
         try {
             const uptimeMs = client.uptime || 0;

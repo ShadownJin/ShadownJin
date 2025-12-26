@@ -55,11 +55,10 @@ declare module 'discord.js' {
 
 export interface UserData extends DocumentData {
     xp: number;
+    level: number;
     messages: number;
     userId: Snowflake
     guildId: Snowflake;
     createAt: Date;
     updateAt?: Date;
 }
-
-export {}

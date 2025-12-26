@@ -1,75 +1,132 @@
-import { UserData } from "../structs/types/firestore.js";
+import admin from "firebase-admin";
+import { Firestore } from "firebase-admin/firestore";
 import { initFirestore } from "./firestore.js";
-import { DocumentReference, Firestore } from "firebase-admin/firestore";
 
-// --- Tipagem de Dados (incluída acima para contexto) ---
 type Snowflake = string;
 
-// --- Configuração ---
 const db: Firestore = initFirestore();
-const COOLDOWN: number = 60 * 1000; // 60 Segundos
-const inCooldown = new Map<Snowflake, number>();
 
-// --- Funções Principais ---
-/**
- * @param guildId
- * @param userId
- * @param amount
- * @returns
- */
-export async function addXp(guildId: Snowflake, userId: Snowflake, amount: number): Promise<UserData> {
-    const id: string = `${guildId}_${userId}`;
+const XP_COOLDOWN = 3 * 1000; // 3 segundos
+const xpCooldown = new Map<Snowflake, number>();
 
-    // Tipando a referência do documento
-    const ref: DocumentReference<UserData> = db.collection('users').doc(id) as DocumentReference<UserData>;
-    const snap = await ref.get();
-    
-    let data: UserData;
-    if (snap.exists) {
-        data = snap.data() as UserData;
-    } else {
-        data = {
-            xp: 0,
-            messages: 0,
-            userId,
-            guildId,
-            createAt: new Date()
-        };
-    }
+// ----------------------
+// XP
+// ----------------------
+export async function addXp(
+  guildId: Snowflake,
+  userId: Snowflake,
+  amount: number
+): Promise<{
+  xp: number;
+  messages: number;
+  updatedAt: number;
+}> {
+  const userRef = db.collection("users").doc(userId);
+  const guildRef = userRef.collection("guilds").doc(guildId);
 
-    // Atualiza os dados
-    data.xp = (data.xp || 0) + amount;
-    data.messages = (data.messages || 0) + 1;
-    data.updateAt = new Date();
+  const now = Date.now();
 
-    // Salva na DB
-    await ref.set(data, {
-        merge: true
-    });
-    return data;
+  // garante usuário global (idempotente)
+  await userRef.set(
+    {
+      createdAt: now
+    },
+    { merge: true }
+  );
+
+  // incrementa XP por guild (uma única operação)
+  await guildRef.set(
+    {
+      xp: admin.firestore.FieldValue.increment(amount),
+      messages: admin.firestore.FieldValue.increment(1),
+      updatedAt: now
+    },
+    { merge: true }
+  );
+
+  const snap = await guildRef.get();
+  return snap.data() as {
+    xp: number;
+    messages: number;
+    updatedAt: number;
+  };
 }
 
-/**
- * @param userId
- * @returns
- */
-export function canGain(userId: Snowflake): boolean {
-    const last: number = inCooldown.get(userId) || 0;
+// ----------------------
+// Cooldown XP
+// ----------------------
+export function canGainXp(userId: Snowflake): boolean {
+  const last = xpCooldown.get(userId) || 0;
 
-    // Verifica se a diferença de tempo é menor que o COOLDOWN
-    if (Date.now() - last < COOLDOWN) {
-        return false
-    }
+  if (Date.now() - last < XP_COOLDOWN) {
+    return false;
+  }
 
-    // Atualiza o cooldown
-    inCooldown.set(userId, Date.now());
-    return true;
+  xpCooldown.set(userId, Date.now());
+  return true;
 }
 
-/**
- * @param xp
- * @returns
- */
-export function xpToLevel(xp: number = 0): number {
-    return Math.floor(0.1 * Math.sqrt(xp));
+// ----------------------
+// Level math
+// ----------------------
+export function xpToLevel(xp = 0): number {
+  return Math.floor(0.1 * Math.sqrt(xp));
+}
+
+export function levelToXp(level: number): number {
+  return Math.pow(level / 0.1, 2);
+}
+
+export function xpToNextLevel(xp: number) {
+  const level = xpToLevel(xp);
+  const currentLevelXp = levelToXp(level);
+  const nextLevelXp = levelToXp(level + 1);
+
+  return {
+    level,
+    currentXp: xp - currentLevelXp,
+    nextLevelXp: nextLevelXp - currentLevelXp,
+    remainingXp: nextLevelXp - xp
+  };
+}
+
+// ----------------------
+// Get XP por guild
+// ----------------------
+export async function getUserXp(
+  guildId: Snowflake,
+  userId: Snowflake
+): Promise<{
+  xp: number;
+  messages: number;
+  updatedAt: number;
+} | null> {
+  const ref = db
+    .collection("users")
+    .doc(userId)
+    .collection("guilds")
+    .doc(guildId);
+
+  const snap = await ref.get();
+  return snap.exists ? (snap.data() as any) : null;
+}
+
+// ----------------------
+// Rank por guild
+// ----------------------
+export async function getUserRank(
+  guildId: Snowflake,
+  userId: Snowflake
+): Promise<number> {
+  const snap = await db
+    .collectionGroup("guilds")
+    .where(admin.firestore.FieldPath.documentId(), "==", guildId)
+    .orderBy("xp", "desc")
+    .get();
+
+  const index = snap.docs.findIndex(
+    doc => doc.ref.parent.parent?.id === userId
+  );
+
+  return index === -1 ? snap.size : index + 1;
 }
