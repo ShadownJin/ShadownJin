@@ -26,6 +26,8 @@ const client = new Client({ // Cria o client
     await loadCommands(client, path.join(__dirname, 'commands'));
     await loadEvents(client, path.join(__dirname, 'events'));
 
+    client.cooldown = new Collection();
+
     client.login(process.env.BOT_TOKEN)
         .then(() => console.log('Bot ligando...'))
         .catch(err => {

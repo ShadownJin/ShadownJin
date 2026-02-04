@@ -1,7 +1,8 @@
-import { Client, Collection, GatewayIntentBits, Interaction } from "discord.js";
+import { Client, Collection, GatewayIntentBits, Interaction, Snowflake } from "discord.js";
 
 export interface CustomClient extends Client {
     commands: Collection<string, any>;
+    cooldown: Collection<number, void>;
 }
 
 export interface Event {
@@ -10,9 +11,20 @@ export interface Event {
 }
 
 export interface Command {
+    cooldown: number;
     data: {
         name: string,
         description: string
     };
     execute: (interaction: any) => Promise<void>;
+}
+
+export interface CooldownParams {
+    guildId?: Snowflake | null;
+    userId: Snowflake;
+    command: string;
+}
+export interface CooldownResult {
+    ok: boolean;
+    left?: number; // Tempo restante em segundos;
 }
