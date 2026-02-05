@@ -1,5 +1,5 @@
 <p align="center>
-<img src="shadownjin-avatar.jpg">
+ <img src="shadownjin-avatar.png" alt="avatar bot" width="300px" height="300px">
 </p>
 
 

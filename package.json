@@ -8,7 +8,7 @@
     "dotenv": "^17.2.3"
   },
   "name": "shadownjin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "⚔️ Um bot modular e tipado para Discord, com sistema de XP, focado em Slash Commands. Deixando seu servidor mais organizado e interativo!",
   "main": "dist/index.js",
