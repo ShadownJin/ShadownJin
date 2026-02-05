@@ -4,7 +4,11 @@ export interface CustomClient extends Client {
     commands: Collection<string, any>;
     cooldown: Collection<number, void>;
 }
-
+declare module 'discord.js' {
+    interface Client {
+        commands: Collection<string, any>;
+    }
+}
 export interface Event {
     name: string;
     execute: (client: CustomClient, ...args: any[]) => void | Promise<void>;

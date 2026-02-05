@@ -9,7 +9,7 @@ import type { Command } from './structs/types/client.js';
 
 const token = process.env.BOT_TOKEN;
 const clientId = process.env.BOT_APPLICATION_ID;
-const guildId = process.env.GUILD_ID; // optional: if present deploys to a guild
+const guildId = process.env.GUILD_TESTE_ID; // optional: if present deploys to a guild
 
 (async () => {
 

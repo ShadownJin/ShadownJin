@@ -4,5 +4,6 @@ declare namespace NodeJS {
         BOT_APPLICATION_ID: string,
         DISCORD_PUBLIC_KEY: string,
         GUILD_TESTE_ID: string,
+        BOT_OWNER: string
     }
 }
