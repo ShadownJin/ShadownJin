@@ -1,0 +1,119 @@
+ShadownJin Source Available License (SSAL)
+Version 1.0
+
+Copyright (c) 2026 ShadownJin
+
+This license applies to ShadownJin and all associated source code, documentation, and files distributed with this License.
+
+TERMS AND CONDITIONS
+
+1. DEFINITIONS
+
+"License" refers to this ShadownJin Source Available License.
+"Software" refers to ShadownJin, including its source code, documentation, and associated files covered by this License.
+"Licensor" refers to ShadownJin, the copyright holder of the Software.
+"You" (or "Your") refers to an individual or legal entity exercising permissions granted by this License.
+"Personal Use" refers to use by an individual for non-commercial purposes, without providing the Software or a substantially similar service to third parties.
+"Commercial Use" refers to any use intended for or directed toward commercial advantage or monetary compensation.
+"Competing Service" refers to offering the Software, or a substantially similar service based on the Software, as a hosted service or product to third parties.
+"Modified Version" refers to any work based on the Software, or any portion thereof, that has been altered, adapted, or transformed from the original.
+"Network Use" refers to interaction with the Software remotely through a computer network, where users interact with the Software’s functionality without receiving a copy of the Software itself.
+
+2. GRANT OF RIGHTS
+
+Subject to the terms and conditions of this License, the Licensor hereby grants You a worldwide, royalty-free, non-exclusive license to:
+
+a) View and study the source code of the Software;
+b) Modify the Software for Your own purposes;
+c) Use the Software for Personal Use, including hosting it for Your own personal purposes;
+d) Distribute modified or unmodified copies of the Software, provided that:
+    - All copies include this License and copyright notice;
+    - You do not use the Software to operate a Competing Service;
+    - You comply with all other terms of this License, including Section 4 (Source Code Disclosure).
+
+
+3. RESTRICTIONS
+
+You may NOT:
+
+a) Use the Software to provide, offer, or operate a Competing Service;
+b) Offer the Software as a hosted service to third parties for commercial purposes;
+c) Use the Software in any way that competes with Shadown or its services;
+d) Remove or alter any copyright notices, trademarks, or attribution from the Software;
+e) Sublicense, sell, rent, lease, or otherwise transfer rights to the Software except as expressly permitted by this License.
+
+Examples of PROHIBITED uses:
+    - Hosting the Software as a SaaS platform for other users
+    - Offering the Software or substantially similar functionality as a paid or free service to third parties
+    - White-labeling the Software to compete with Shadown
+
+Examples of PERMITTED uses:
+    - Using the Software for personal projects
+    - Hosting the Software on your own infrastructure for your own use
+    - Studying the code to learn implementation techniques
+    - Creating modifications for your personal use
+    - Contributing improvements back to the original project
+    - 
+4. SOURCE CODE DISCLOSURE (NETWORK COP  - LEFT)
+
+If You run a Modified Version of th -  Software and allow third parties to interact with it through Network Use, You must:
+
+a) Make the complete Corresponding Source of Your Modified Version available to all users who interact with the Software through the network;
+b) Provide prominent notice to users explaining how they can obtain the Corresponding Source;
+c) Make the source code available through one of the following methods:
+    - A prominent link within the user interface or service
+    - A publicly accessible version control repository
+    - A download link provided through the Software’s interface or documentation
+d) Ensure the source code remains available for at least 1 year from the last time You offered Network Use of the Modified Version;
+e) License Your modifications under this License or a compatible license approved by Shadown.
+
+"Corresponding Source" means all the source code needed to generate, install, and run the Modified Version, including build scripts, configuration files, and installation instructions, but excluding system libraries and general-purpose tools not part of the Software.
+
+This requirement applies even if You are using the Software for Personal Use, as long as third parties can interact with it through a network.
+
+EXEMPTIONS:
+This requirement does NOT apply if:
+    - You are running an unmodified version of the Software
+    - The Software is only accessible to You personally
+    - You are testing modifications in a private, non-public environment
+
+5. CONTRIBUTIONS
+
+Any contribution intentionally submitted for inclusion in the Software by You to the Licensor shall be under the terms of this License. By submitting a contribution, You:
+
+a) Assign all right, title, and interest, including all copyrights, in and to the contribution to Shadown;
+b) Waive all moral rights in the contribution;
+c) Represent that You are legally entitled to assign the contribution;
+d) Represent that the contribution is Your original creation and does not violate third-party rights.
+
+ShadownJin may use, modify, distribute, sublicense, and relicense the contribution under any terms.
+
+6. RELICENSING
+
+ShadownJin reserves the exclusive right to relicense the Software, in whole or in part, at any time, including under proprietary, open source, commercial, or dual licensing schemes.
+
+7. COMMERCIAL LICENSING
+
+If You wish to use the Software in a manner not permitted by this License, You must obtain a separate commercial license from Shadown.
+
+8. TRADEMARK
+
+This License does not grant permission to use the trade names, trademarks, service marks, or product names of Shadown, except as required to describe the origin of the Software.
+
+9. DISCLAIMER OF WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+
+10. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL SHADOWN BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OR INABILITY TO USE THE SOFTWARE.
+
+11. TERMINATION
+
+This License is effective until terminated. Any violation automatically terminates Your rights under this License.
+
+12. GENERAL
+
+a) This License constitutes the entire agreement concerning the Software.
+b) If any provision is unenforceable, it shall be reformed to the minimum extent necessary.
+c) This License is governed by the laws applicable to Shadown’s jurisdiction.
