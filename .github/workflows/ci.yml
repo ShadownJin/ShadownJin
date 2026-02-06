@@ -9,26 +9,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Setup Node.js
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run ESLint
-        run: npm run lint || true
+        run: npm run lint
 
       - name: Validate bot entrypoint
-        run: node -c src/index.js || echo "Lint de sintaxe finalizado"
+        run: node -c src/index.js
 
-      - name: Confirm build success
-        run: echo "CI Finalizada com Sucesso"
+      - name: Build project
+        run: npm run build --if-present
+
+      - name: CI completed successfully
+        run: echo "✓ CI Pipeline Completed Successfully"
