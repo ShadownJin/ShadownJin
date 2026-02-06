@@ -4,6 +4,7 @@ dotenv.config();
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
+import { initFirestore } from './lib/firestore.js';
 
 //Handlers
 import { loadCommands } from './handlers/commandHandler.js';
@@ -28,15 +29,18 @@ const client = new Client({ // Cria o client
 
     client.cooldown = new Collection();
 
+    // Inicia o banco de dados!
+    initFirestore();
+
     client.login(process.env.BOT_TOKEN)
-        .then(() => console.log('Bot ligando...'))
+        .then(() => console.log('😴Bot ligando...'))
         .catch(err => {
             console.error('Erro ao ligar o bot: ', err);
             process.exit(1);
         });
 
     process.on('SIGINT', async () => {
-        console.log('Bot desligando...');
+        console.log('💤Bot desligando...');
         await client.destroy();
         process.exit(0);
     });
