@@ -4,8 +4,8 @@ import type { Command } from '../../structs/types/client.js';
 const pingCommand: Command = {
     cooldown: 5,
     data: new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('[UTILS] Responde com pong!'),
+        .setName('ping')
+        .setDescription('[UTILS] Responde com pong!'),
     async execute(interaction: any) {
         await interaction.reply('Pong!');
     }
