@@ -16,7 +16,7 @@ export async function createOnEnter(
     guildName,
     modules: {
       moderation: {
-        enable: true,
+        enabled: true,
         logChannelId: null,
         staffRoleId: null,
       },

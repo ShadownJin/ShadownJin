@@ -19,7 +19,7 @@ export interface GuildData extends DocumentData {
   guildName: string;
   modules: {
     moderation: {
-      enable: boolean;
+      enabled: boolean;
       logChannelId: string | null;
       staffRoleId: string | null;
     };
