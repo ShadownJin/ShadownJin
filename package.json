@@ -14,7 +14,7 @@
   "description": "⚔️ Um bot modular e tipado para Discord, com sistema de XP, focado em Slash Commands. Deixando seu servidor mais organizado e interativo!",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx src/index.ts",
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
     "deploy": "tsx src/deploy-commands.ts"
