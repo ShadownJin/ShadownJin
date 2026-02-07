@@ -1,54 +1,61 @@
-import { ChatInputCommandInteraction, Client, SlashCommandBuilder } from "discord.js";
-import type { Command, CustomClient } from "../../structs/types/client.js";
-import { UserData } from "../../structs/types/firebase.js";
+import { MessageFlags, SlashCommandBuilder } from "discord.js";
+import type { Command } from "../../structs/types/client.js";
+import { getOrCreateUser } from "../../lib/database/defaultUser.schema.js";
 import { initFirestore } from "../../lib/firestore.js";
+
 const db = initFirestore();
 
-const DAILY_COOLDOWN = 1000 * 60 * 60 * 24;
-const DAILY_REWARD = Math.floor(Math.random() * 1201) + 300; // 300 - 1201;
+const DAILY_COOLDOWN = 1000 * 60 * 60 * 24; // 24 Horas
+const DAILY_REWARD = Math.floor(Math.random() * 1201) + 300; // Valor entre 300 e 1500
 
 const dailyCommand: Command = {
     cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('daily')
         .setDescription('[ECONOMY] Pegue sua recompensa diária!'),
+
     async execute(interaction: any) {
         const userId = interaction.user.id;
+        const now = Date.now();
+
+        // 1. Obtemos os dados do utilizador (Cria se não existir)
+        const userData = await getOrCreateUser(userId);
+        
+        // Referência para podermos atualizar os dados depois
         const userRef = db.collection('users').doc(userId);
-        const now  =  Date.now();
-        const snaps = await userRef.get();
 
-        if (!snaps.exists) {
-            await userRef.set({
-                souls: DAILY_REWARD,
-                lastDaily: now,
-            });
-            await interaction.reply(`✨ Você recebeu **${DAILY_REWARD} souls** pela primeira vez!`);
-            return;
-        };
+        const lastDaily = userData.lastDaily ?? 0;
+        const currentSouls = userData.souls ?? 0;
 
-        const data = snaps.data()!;
-        const lastDaily = data.lastDaily ?? 0;
-        const souls = data.souls ?? 0;
-
+        // 2. Lógica de Cooldown
         const timePassed = now - lastDaily;
 
-        // Ainda em cooldown
-        if (timePassed < DAILY_COOLDOWN) {
+        if (timePassed < DAILY_COOLDOWN && lastDaily !== 0) {
             const remaining = DAILY_COOLDOWN - timePassed;
             const hours = Math.floor(remaining / (1000 * 60 * 60));
             const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
 
-            await interaction.reply(`⏳ Você já coletou o daily.\nVolte em **${hours}h ${minutes}min**.`);
-            return;
-        };
+            return await interaction.reply({
+                content: `⏳ Você já coletou o daily.\nVolte em **${hours}h ${minutes}min**.`,
+                flags: MessageFlags.Ephemeral // Opcional: apenas o utilizador vê
+            });
+        }
 
-        // Pode coletar
+        // 3. Atualização do Banco de Dados
+        const isFirstTime = lastDaily === 0;
+        const newSoulsValue = currentSouls + DAILY_REWARD;
+
         await userRef.update({
-            souls: souls + DAILY_REWARD,
+            souls: newSoulsValue,
             lastDaily: now
         });
-        await interaction.reply(`🔥 Daily coletado! Você recebeu **${DAILY_REWARD} souls**`);
+
+        // 4. Resposta ao Utilizador
+        if (isFirstTime) {
+            await interaction.reply(`✨ Bem-vindo ao sistema! Você recebeu **${DAILY_REWARD} souls** pela primeira vez!`);
+        } else {
+            await interaction.reply(`🔥 Daily coletado! Você recebeu **${DAILY_REWARD} souls**. Total: **${newSoulsValue}**`);
+        }
     }
 };
 

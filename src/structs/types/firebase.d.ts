@@ -7,7 +7,7 @@ export interface UserData extends DocumentData {
     souls: number;
     messages: number;
     userId: string;
-    dailyCooldown: Date;
+    lastDaily: number;
     createAt: Date;
     updateAt?: Date;
 }

@@ -9,7 +9,7 @@ export async function getOrCreateUser(userId: string): Promise<UserData> {
         souls: 0,
         messages: 0,
         userId,
-        dailyCooldown: new Date(),
+        lastDaily: 0,
         createAt: new Date()
     })
 
