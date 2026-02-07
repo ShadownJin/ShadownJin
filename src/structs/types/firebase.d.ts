@@ -10,3 +10,11 @@ export interface UserData extends DocumentData {
     createAt: Date;
     updateAt?: Date;
 }
+
+export interface GuildData extends DocumentData {
+    guildId: string;
+    ownerId: string;
+    guildName: string;
+    createAt: Date;
+    UpdateAt?: Date;
+}

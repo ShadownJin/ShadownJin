@@ -1,4 +1,4 @@
-import { Message, Client, MessageFlags } from 'discord.js';
+import { Message, MessageFlags } from 'discord.js';
 import { addXp, canGainXp, xpToLevel } from '../lib/xpManager.js';
 import type { CustomClient, Event } from '../structs/types/client.js';
 import { getOrCreateUser } from '../lib/database/defaultUser.schema.js';
