@@ -1,7 +1,6 @@
-<p align="center>
- <img src="shadownjin-avatar.png" alt="avatar bot" width="300px" height="300px">
+<p align="center">
+<img src="ShadownBanner.png" alt="avatar bot" width="768px" height="400px">
 </p>
-
 
 <p align="center">
 
