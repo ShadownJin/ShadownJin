@@ -17,10 +17,10 @@ Bot em JavaScript com **discord.js** e **Firestore**, arquitetura modular e supo
 
 ## 🛠️ Tecnologias Principais
 ### Linguagem e Ambiente
-* **TypeScript (TS):** Utilizado como linguagem principal para tipagem forte, garantindo maior estabilidade e menos erros em tempo de execução.
-* **Node.js 25:** O ambiente de *runtime* principal.
-* **ES Modules (ESM):** O projeto utiliza a sintaxe moderna `import`/`export`, aproveitando os recursos assíncronos como `await import()`.
-* **TSX:** Ferramenta de *runtime* para executar instantaneamente arquivos TypeScript e JSX, substituindo `nodemon` e `ts-node` em ambientes de desenvolvimento.
+* <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="20px" height="20px" align="top" style="padding-bottom: 10px"/> **TypeScript (TS):** Utilizado como linguagem principal para tipagem forte, garantindo maior estabilidade e menos erros em tempo de execução.
+* <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain-wordmark.svg" width="20px" height="20px" align="top" style="padding-bottom: 10px"/> **Node.js 25:** O ambiente de *runtime* principal.
+* <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="20px" height="20px" align="top" style="padding-bottom: 10px"/> **ES Modules (ESM):** O projeto utiliza a sintaxe moderna `import`/`export`, aproveitando os recursos assíncronos como `await import()`.
+* <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="20px" height="20px" align="top" style="padding-bottom: 10px"/> **TSX:** Ferramenta de *runtime* para executar instantaneamente arquivos TypeScript e JSX, substituindo `nodemon` e `ts-node` em ambientes de desenvolvimento.
 
 ### Bibliotecas Principais
 * **Discord.js (v14+):** Biblioteca principal para interagir com a API do Discord.
