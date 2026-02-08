@@ -1,5 +1,5 @@
 <p align="center">
-<img src="ShadownBanner.png" alt="avatar bot" width="768px" height="400px">
+<img src="src/assets/shadown_video.gif" alt="avatar bot" width="768px" height="400px">
 </p>
 
 <p align="center">
