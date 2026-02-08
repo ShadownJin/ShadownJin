@@ -1,14 +1,14 @@
-import { SlashCommandBuilder } from 'discord.js';
-import type { Command } from '../../structs/types/client.js';
+import { SlashCommandBuilder } from "discord.js";
+import type { Command } from "../../structs/types/client.js";
 
 const pingCommand: Command = {
-    cooldown: 5,
-    data: new SlashCommandBuilder()
-        .setName('ping')
-        .setDescription('[UTILS] Responde com pong!'),
-    async execute(interaction: any) {
-        await interaction.reply('Pong!');
-    }
+  cooldown: 5,
+  data: new SlashCommandBuilder()
+    .setName("ping")
+    .setDescription("[UTILS] Responde com pong!"),
+  async execute(interaction: any) {
+    await interaction.reply("Pong!");
+  },
 };
 
 export default pingCommand;

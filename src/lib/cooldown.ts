@@ -14,30 +14,30 @@ const active = new Map<string, number>();
  */
 
 export function hasCooldown(
-    params: CooldownParams & { seconds: number }
+  params: CooldownParams & { seconds: number },
 ): CooldownResult {
-    const { guildId, userId, command, seconds } = params;
+  const { guildId, userId, command, seconds } = params;
 
-    // Contrução da chave
-    const key = `${guildId || 'dm'}_${userId}_${command}`;
-    const now = Date.now();
+  // Contrução da chave
+  const key = `${guildId || "dm"}_${userId}_${command}`;
+  const now = Date.now();
 
-    // Obtém o timestamp de expiração caso contrario é 0
-    const expires = active.get(key) || 0;
+  // Obtém o timestamp de expiração caso contrario é 0
+  const expires = active.get(key) || 0;
 
-    // Se o tempo atual for MENOR que o tempo de expiração o cooldown está ativo;
-    if (now < expires) {
-        const left = Math.ceil((expires - now) / 1000);
-        return { ok: false, left };
-    }
+  // Se o tempo atual for MENOR que o tempo de expiração o cooldown está ativo;
+  if (now < expires) {
+    const left = Math.ceil((expires - now) / 1000);
+    return { ok: false, left };
+  }
 
-    active.set(key, now + (seconds * 1000));
-    return { ok: true };
+  active.set(key, now + seconds * 1000);
+  return { ok: true };
 }
 
 export function clearCooldown(params: CooldownParams): void {
-    const {guildId, userId, command} = params;
-    const key = `${guildId || 'dm'}_${userId}_${command}`
+  const { guildId, userId, command } = params;
+  const key = `${guildId || "dm"}_${userId}_${command}`;
 
-    active.delete(key);
+  active.delete(key);
 }

@@ -19,6 +19,7 @@ export async function createOnEnter(
         enabled: true,
         logChannelId: null,
         staffRoleId: null,
+        warningSystem: true
       },
     },
     createAt: new Date(),

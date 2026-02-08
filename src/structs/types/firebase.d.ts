@@ -22,6 +22,7 @@ export interface GuildData extends DocumentData {
       enabled: boolean;
       logChannelId: string | null;
       staffRoleId: string | null;
+      warningSystem: boolean;
     };
   };
   createAt: Date;
