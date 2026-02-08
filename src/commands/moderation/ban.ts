@@ -6,7 +6,7 @@ import {
   EmbedBuilder,
   TextChannel,
 } from "discord.js";
-import { initFirestore } from "../../lib/firestore.js";
+import { initFirestore } from "../../lib/database/firestore.js";
 import { Command } from "../../structs/types/client.js";
 const db = initFirestore();
 

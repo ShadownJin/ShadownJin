@@ -1,7 +1,7 @@
 import { MessageFlags, SlashCommandBuilder } from "discord.js";
 import type { Command } from "../../structs/types/client.js";
 import { getOrCreateUser } from "../../lib/database/defaultUser.schema.js";
-import { initFirestore } from "../../lib/firestore.js";
+import { initFirestore } from "../../lib/database/firestore.js";
 
 const db = initFirestore();
 

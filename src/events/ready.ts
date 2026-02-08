@@ -1,5 +1,4 @@
-import { Events } from "discord.js";
-import { CustomClient, Event } from "../structs/types/client.js";
+import { Event } from "../structs/types/client.js";
 
 const ready: Event = {
   name: "clientReady",

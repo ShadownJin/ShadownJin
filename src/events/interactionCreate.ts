@@ -1,9 +1,9 @@
 import type { CustomClient, Event } from "../structs/types/client.js";
 
 // Cooldown
-import { hasCooldown } from "../lib/cooldown.js";
+import { hasCooldown } from "../lib/utils/cooldown.js";
 import { CooldownResult } from "../structs/types/client.js";
-import { MessageFlags } from "discord.js";
+import { SlashCommandBuilder } from "discord.js";
 
 const interactionCreate: Event = {
   name: "interactionCreate",
@@ -32,7 +32,7 @@ const interactionCreate: Event = {
       const cd: CooldownResult = hasCooldown({
         guildId: interaction.guildId!,
         userId: interaction.user.id,
-        command: command.name,
+        command: SlashCommandBuilder.name,
         seconds: command.cooldown || 3,
       });
       if (!cd.ok) {

@@ -8,7 +8,7 @@ import {
     GuildMember
 } from "discord.js";
 import { Command } from "../../structs/types/client.js";
-import { initFirestore } from "../../lib/firestore.js";
+import { initFirestore } from "../../lib/database/firestore.js";
 import { count } from "node:console";
 import { FieldValue } from "firebase-admin/firestore";
 const db = initFirestore();

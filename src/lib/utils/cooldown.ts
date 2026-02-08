@@ -1,4 +1,4 @@
-import { CooldownParams, CooldownResult } from "../structs/types/client.js";
+import { CooldownParams, CooldownResult } from "../../structs/types/client.js";
 
 /**
  * Chave: string (ex: 12345_69890_ping)

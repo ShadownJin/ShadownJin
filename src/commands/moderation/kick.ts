@@ -7,7 +7,7 @@ import {
   TextChannel,
 } from "discord.js";
 import { Command } from "../../structs/types/client.js";
-import { initFirestore } from "../../lib/firestore.js";
+import { initFirestore } from "../../lib/database/firestore.js";
 const db = initFirestore();
 
 const kickCommand: Command = {

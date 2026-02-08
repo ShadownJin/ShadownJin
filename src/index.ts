@@ -4,7 +4,7 @@ dotenv.config();
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Client, Collection, GatewayIntentBits } from 'discord.js';
-import { initFirestore } from './lib/firestore.js';
+import { initFirestore } from './lib/database/firestore.js';
 
 //Handlers
 import { loadCommands } from './handlers/commandHandler.js';

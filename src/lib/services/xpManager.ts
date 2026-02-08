@@ -1,7 +1,7 @@
 import admin from "firebase-admin";
 import { Firestore } from "firebase-admin/firestore";
-import { initFirestore } from "./firestore.js";
-import { getOrCreateUser } from "./database/defaultUser.schema.js";
+import { initFirestore } from "../database/firestore.js";
+import { getOrCreateUser } from "../database/defaultUser.schema.js";
 
 type SnowFlake = string;
 

@@ -5,7 +5,7 @@ import {
   ChannelType
 } from "discord.js";
 import { Command } from "../../structs/types/client.js";
-import { initFirestore } from "../../lib/firestore.js";
+import { initFirestore } from "../../lib/database/firestore.js";
 import { ChannelLogConfig } from "./handlers/channelLog.js";
 import { RoleStaffConfig } from "./handlers/roleStaff.js";
 const db = initFirestore();

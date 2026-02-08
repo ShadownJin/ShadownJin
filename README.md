@@ -16,12 +16,6 @@ Bot em JavaScript com **discord.js** e **Firestore**, arquitetura modular e supo
 
 ---
 
-## 🚀 Funcionalidades Atuais
-- Comandos modulares.
-- Base bot completa!
-
----
-
 ## 🛠️ Tecnologias Principais
 ### Linguagem e Ambiente
 * **TypeScript (TS):** Utilizado como linguagem principal para tipagem forte, garantindo maior estabilidade e menos erros em tempo de execução.
@@ -36,17 +30,19 @@ Bot em JavaScript com **discord.js** e **Firestore**, arquitetura modular e supo
 
 ---
 
-## 🌐 Futuro do Projeto
-- Sistema de XP (com cooldown).
-- Integração com Firebase.
-- Moderação automática (ativável/desativável).
-- Dashboard Web estilo Loritta.
-- Rotinas avançadas de economia/XP.
-- Estatísticas no servidor.
-- Log de eventos.
-- Sistema de inventário.
-- Sistema de Loja.
-- Sistema de Drop (Estilo RPG)
+## 🌐 Features Implementar:
+- [x] Base bot completa (Estrutura e Handlers);
+- [x] Integração com Firebase;
+- [x] Sistema de XP (com cooldown);
+- [x] Estatísticas no servidor (Básico)
+- [ ] Comandos modulares;
+- [ ] Moderação automática (ativável/desativável);
+- [ ] Dashboard Web estilo Loritta;
+- [ ] Rotinas avançadas de economia/XP;
+- [ ] Log de eventos;
+- [ ] Sistema de inventário;
+- [ ] Sistema de Loja;
+- [ ] Sistema de Drop (Estilo RPG);
 
 ---
 

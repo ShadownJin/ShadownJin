@@ -4,29 +4,25 @@ import {
   GatewayIntentBits,
   Interaction,
   Snowflake,
+  ChatInputCommandInteraction,
+  SlashCommandBuilder,
+  SlashCommandOptionsOnlyBuilder
 } from "discord.js";
 
 export interface CustomClient extends Client {
-  commands: Collection<string, any>;
-  cooldown: Collection<number, void>;
-}
-declare module "discord.js" {
-  interface Client {
-    commands: Collection<string, any>;
-  }
+  commands: Collection<string, Command>;
+  cooldown: Collection<string, number>;
 }
 export interface Event {
   name: string;
+  once?: boolean;
   execute: (client: CustomClient, ...args: any[]) => void | Promise<void>;
 }
 
 export interface Command {
-  cooldown: number;
-  data: {
-    name: string;
-    description: string;
-  };
-  execute: (interaction: any) => Promise<void>;
+  cooldown?: number;
+  data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder | SlashCommandSubcommandsOnlyBuilder;
+  execute: (interaction: ChatInputCommandInteraction) => Promise<void>;
 }
 
 export interface CooldownParams {

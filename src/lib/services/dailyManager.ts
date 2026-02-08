@@ -1,6 +1,6 @@
 import admin from "firebase-admin";
 import { Firestore } from "firebase-admin/firestore";
-import { initFirestore } from "./firestore.js";
+import { initFirestore } from "../database/firestore.js";
 
 type Snowflake = string;
 
