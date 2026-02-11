@@ -44,4 +44,11 @@ const client = new Client({ // Cria o client
         await client.destroy();
         process.exit(0);
     });
+
+    process.on('unhandledRejection', (reason) => {
+        console.error('Unhandlled Rejection: ', reason);
+    });
+    process.on('uncaughtException', (error) => {
+        console.error("Uncaught Exception: ", error);
+    });
 })();

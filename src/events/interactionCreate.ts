@@ -3,11 +3,12 @@ import type { CustomClient, Event } from "../structs/types/client.js";
 // Cooldown
 import { hasCooldown } from "../lib/utils/cooldown.js";
 import { CooldownResult } from "../structs/types/client.js";
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, ChatInputCommandInteraction, MessageFlags } from "discord.js";
+import { handlerError } from "../lib/errors/erroHandler.js";
 
 const interactionCreate: Event = {
   name: "interactionCreate",
-  async execute(client: CustomClient, interaction: any) {
+  async execute(client: CustomClient, interaction: ChatInputCommandInteraction) {
     try {
       if (
         !interaction ||
@@ -25,8 +26,8 @@ const interactionCreate: Event = {
         return;
       }
 
-      //Cooldown
-      const { cooldown } = interaction.client;
+      //Cooldown ---- REMOVIDO TEMPORARIAMENTE
+      // const { cooldown } = interaction.client;
 
       // Verificação: Cooldown
       const cd: CooldownResult = hasCooldown({
@@ -38,13 +39,16 @@ const interactionCreate: Event = {
       if (!cd.ok) {
         await interaction.reply({
           content: `Aguarde! Faltam ${cd.left} para usar esse comando novamente!`,
-          MessageFlags: 64, // Ephemeral: True
+          flags: MessageFlags.Ephemeral// Ephemeral: True
         });
         return;
       }
 
       await command.execute(interaction);
-    } catch (err) {
+    } catch (error) {
+      await handlerError(error, interaction);
+
+      /** --- REMOVIDO TEMPORARIAMENTE ----
       console.error("Erro ao processar interação:", err);
       try {
         if (interaction && !interaction.replied)
@@ -52,7 +56,11 @@ const interactionCreate: Event = {
             content: "Erro ao executar o comando.",
             ephemeral: true,
           });
-      } catch {}
+      } catch {
+        console.log("Ue.....")
+      }
+    */
+
     }
   },
 };
