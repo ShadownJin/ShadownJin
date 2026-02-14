@@ -12,7 +12,7 @@ const userInfoCommand: Command = {
   cooldown: 5,
   data: new SlashCommandBuilder()
     .setName("userinfo")
-    .setDescription("[UTILS] Mostra informações do usuário")
+    .setDescription("[INFO] Mostra informações do usuário")
     .addUserOption((option) =>
       option
         .setName("user")
@@ -34,7 +34,7 @@ const userInfoCommand: Command = {
 
       // Pega o usuário dentro do servidor
       const member: GuildMember = await guild.members.fetch(target.id);
-    const nicknameMember = member.nickname || "-";
+      const nicknameMember = member.nickname || "-";
 
       const userInfoEmbed = new EmbedBuilder()
         .setTitle(`Informações do Usuário: ${member.user.username}`)

@@ -14,7 +14,7 @@ const botInfoCommand: Command = {
   cooldown: 10,
   data: new SlashCommandBuilder()
     .setName("botinfo")
-    .setDescription("[UTILS] Descubra mais sobre mim!"),
+    .setDescription("[INFO] Descubra mais sobre mim!"),
   async execute(interaction: ChatInputCommandInteraction) {
     try {
       // extends: client as Client

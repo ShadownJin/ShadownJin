@@ -3,10 +3,11 @@ import {
   EmbedBuilder,
   MessageFlags,
 } from "discord.js";
+import { DocumentData } from "firebase-admin/firestore";
 
 export async function ChannelLogConfig(
   interaction: ChatInputCommandInteraction,
-  guildRef: any,
+  guildRef: DocumentData,
 ) {
   const channel = interaction.options.getChannel("channel");
 

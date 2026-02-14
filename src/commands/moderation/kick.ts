@@ -14,7 +14,7 @@ const kickCommand: Command = {
   cooldown: 5,
   data: new SlashCommandBuilder()
     .setName("kick")
-    .setDescription("[MODERATION] Use para expulsar alguem do servidor!")
+    .setDescription("[MODERAÇÃO] Use para expulsar alguem do servidor!")
     .addUserOption((option) =>
       option
         .setName("target")

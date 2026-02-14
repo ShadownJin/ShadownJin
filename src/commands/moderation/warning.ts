@@ -9,7 +9,6 @@ import {
 } from "discord.js";
 import { Command } from "../../structs/types/client.js";
 import { initFirestore } from "../../lib/database/firestore.js";
-import { count } from "node:console";
 import { FieldValue } from "firebase-admin/firestore";
 const db = initFirestore();
 
@@ -17,7 +16,7 @@ const warningCommand: Command = {
     cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('warning')
-        .setDescription('[MODERATION] Use para dar um aviso a um usuário!')
+        .setDescription('[MODERAÇÃO] Use para dar um aviso a um usuário!')
         .addUserOption(option =>
             option
                 .setName('target')

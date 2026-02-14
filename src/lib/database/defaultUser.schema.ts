@@ -1,6 +1,7 @@
-import admin from "firebase-admin";
 import { UserData } from "../../structs/types/firebase.js";
 import { DocumentData } from "firebase-admin/firestore";
+import { initFirestore } from "./firestore.js";
+const db = initFirestore();
 
 export async function getOrCreateUser(userId: string): Promise<UserData> {
   const defaultUser = (userId: string): UserData => ({
@@ -13,9 +14,11 @@ export async function getOrCreateUser(userId: string): Promise<UserData> {
     lastDaily: 0,
     createAt: new Date(),
     inventory: [],
+    profile: {
+      slogan: "Uma frase de efeito 😎"
+    }
   });
 
-  const db = admin.firestore();
   const ref = db.collection("users").doc(String(userId));
   const snap = await ref.get();
 
@@ -28,11 +31,10 @@ export async function getOrCreateUser(userId: string): Promise<UserData> {
 };
 
 export async function getOrCreateWarningUser(userId: string, guildId: string): Promise<DocumentData> {
-  const defaultWarningUser = (userId: string, guildId: string): DocumentData => ({
+  const defaultWarningUser = (_userId: string, _guildId: string): DocumentData => ({
     warningCount: 0
   });
 
-  const db = admin.firestore();
   const ref = db.collection('users').doc(String(userId)).collection('warning').doc(guildId);
   const snap = await ref.get();
 

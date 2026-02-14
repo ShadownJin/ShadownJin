@@ -1,4 +1,4 @@
-import { MessageFlags, SlashCommandBuilder } from "discord.js";
+import { MessageFlags, SlashCommandBuilder, ChatInputCommandInteraction } from "discord.js";
 import type { Command } from "../../structs/types/client.js";
 import { getOrCreateUser } from "../../lib/database/defaultUser.schema.js";
 import { initFirestore } from "../../lib/database/firestore.js";
@@ -14,7 +14,7 @@ const dailyCommand: Command = {
     .setName("daily")
     .setDescription("[ECONOMY] Pegue sua recompensa diária!"),
 
-  async execute(interaction: any) {
+  async execute(interaction: ChatInputCommandInteraction) {
     const userId = interaction.user.id;
     const now = Date.now();
 
@@ -35,10 +35,11 @@ const dailyCommand: Command = {
       const hours = Math.floor(remaining / (1000 * 60 * 60));
       const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
 
-      return await interaction.reply({
+      await interaction.reply({
         content: `⏳ Você já coletou o daily.\nVolte em **${hours}h ${minutes}min**.`,
         flags: MessageFlags.Ephemeral, // Opcional: apenas o utilizador vê
       });
+      return;
     }
 
     // 3. Atualização do Banco de Dados
@@ -55,10 +56,12 @@ const dailyCommand: Command = {
       await interaction.reply(
         `✨ Bem-vindo ao sistema! Você recebeu **${DAILY_REWARD} souls** pela primeira vez!`,
       );
+      return;
     } else {
       await interaction.reply(
         `🔥 Daily coletado! Você recebeu **${DAILY_REWARD} souls**. Total: **${newSoulsValue}**`,
       );
+      return;
     }
   },
 };

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder, ChatInputCommandInteraction } from "discord.js";
 import type { Command } from "../../structs/types/client.js";
 
 const pingCommand: Command = {
@@ -6,7 +6,7 @@ const pingCommand: Command = {
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription("[UTILS] Responde com pong!"),
-  async execute(interaction: any) {
+  async execute(interaction: ChatInputCommandInteraction) {
     await interaction.reply("Pong!");
   },
 };

@@ -1,8 +1,6 @@
 import {
   Client,
   Collection,
-  GatewayIntentBits,
-  Interaction,
   Snowflake,
   ChatInputCommandInteraction,
   SlashCommandBuilder,
@@ -16,6 +14,7 @@ export interface CustomClient extends Client {
 export interface Event {
   name: string;
   once?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   execute: (client: CustomClient, ...args: any[]) => void | Promise<void>;
 }
 

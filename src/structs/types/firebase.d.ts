@@ -11,6 +11,9 @@ export interface UserData extends DocumentData {
   createAt: Date;
   updateAt?: Date;
   inventory: [];
+  profile : {
+      slogan: string;
+    }
 }
 
 export interface GuildData extends DocumentData {

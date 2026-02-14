@@ -14,7 +14,7 @@ const configCommand: Command = {
   cooldown: 5,
   data: new SlashCommandBuilder()
     .setName("config")
-    .setDescription("[CONFIG] Configurações do ShadownJin para o servidor!")
+    .setDescription("[MODERAÇÃO] Configurações do ShadownJin para o servidor!")
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     // GRUPO: Moderation
     .addSubcommandGroup((sub) =>
@@ -42,9 +42,7 @@ const configCommand: Command = {
             .addRoleOption((option) =>
               option
                 .setName("role")
-                .setDescription(
-                  "Cargo que terá permissão para usar comandos de moderação",
-                )
+                .setDescription("Cargo que terá permissão para usar comandos de moderação",)
                 .setRequired(true),
             ),
         ),

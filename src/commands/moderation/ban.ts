@@ -14,7 +14,7 @@ const banCommand: Command = {
   cooldown: 5,
   data: new SlashCommandBuilder()
     .setName("ban")
-    .setDescription("[MODERATION] Use para banir alguem do servidor!")
+    .setDescription("[MODERAÇÃO] Use para banir alguem do servidor!")
     .addUserOption((option) =>
       option
         .setName("target")

@@ -18,6 +18,7 @@ const guildId = process.env.GUILD_TESTE_ID; // optional: if present deploys to a
     process.exit(1);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const commands: any[] = [];
   const commandsPath = path.join(process.cwd(), 'src', 'commands');
   if (!fs.existsSync(commandsPath)) {
@@ -37,8 +38,10 @@ const guildId = process.env.GUILD_TESTE_ID; // optional: if present deploys to a
       const cmd: Command = imported.default ?? imported;
       if (cmd && 'data' in cmd) {
         // SlashCommandBuilder -> toJSON, plain object -> as is
-        const json = (typeof (cmd as any).data?.toJSON === 'function') ? (cmd as any).data.toJSON() : (cmd as any).data;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const json = (typeof (cmd as any).data?.toJSON === 'function') ? (cmd as any).data.toJSON() : (cmd as any).data; 
         commands.push(json);
+
       } else {
         console.log(`[AVISO] arquivo de comando inválido: ${filePath}`);
       }
