@@ -34,14 +34,18 @@ const userInfoCommand: Command = {
 
       // Pega o usuário dentro do servidor
       const member: GuildMember = await guild.members.fetch(target.id);
+    const nicknameMember = member.nickname || "-";
 
       const userInfoEmbed = new EmbedBuilder()
         .setTitle(`Informações do Usuário: ${member.user.username}`)
         .setThumbnail(target.displayAvatarURL({ size: 1024 }))
         .setColor("#0099FF")
         .addFields(
-          { name: "🆔 Discord ID", value: `\`${target.id}\``, inline: true },
-          { name: "💠 Nome", value: `\`${target.username}\``, inline: true },
+          { name: "👤 Nome do Usuário:", value: `\`${target.username}\``, inline: true },
+          { name: "👤 Nome Exibição:", value: `\`${target.displayName}\``, inline: true },
+          { name: "👤 Nick no Servidor:", value: `\`${nicknameMember}\``, inline: true },
+          { name: "🆔 ID do Usuário:", value: `\`${target.username}\``, inline: true },
+          { name: "🖼️ Avatar:", value: `[Avatar](${target.displayAvatarURL()})`, inline: true},
           {
             name: "📅 Conta Criada em",
             value: `\`${target.createdAt.toLocaleString("pt-BR")}\``,
